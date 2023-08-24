@@ -28,14 +28,23 @@ services:
     # networks:
     #   - proxy
     restart: always
+    environment:
+      DB_HOST: postgres
+      DB_USERNAME: habrpguser
+      DB_PASSWORD: pgpwd4habr
+      DB_DATABASE: habrdb
+      PORT: 8080
+      JWT_ACCESS_SECRET: jwt-secret-key
+      JWT_REFRESH_SECRET: jwt-secret-key
+      SMTP_HOST: "smtp.mail.ru"
+      SMTP_PORT: 465
+      SMTP_USER: irishka08_072011@mail.ru
+      SMTP_PASSWORD: uYGUtPbNMUj0PMSz8wcM
+      API_URL: http://localhost:8080
+      CLIENT_URL: http://localhost:801
     build:
       context: CheckMuline_back
       dockerfile: Dockerfile
-    environment:
-      #   DB_SCHEMA: postgres
-      DB_USER: habrpguser
-      DB_PASSWORD: pgpwd4habr
-      DB_HOST: postgres
     ports:
       - "8080:8080"
     # depends_on:
@@ -50,7 +59,8 @@ services:
       context: CheckMuline_front
       dockerfile: Dockerfile
     ports:
-      - "4173:4173"
+      - "443:443"
+      - "801:80"
     # depends_on:
     #   postgres:
     #     condition: service_healthy
