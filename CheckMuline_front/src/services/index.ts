@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_URL = `http://localhost:8080/api`;
+export const API_URL = `https://mulinehub.ru/api`;
 
 export interface ErrorData {
   message: string;
