@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, observable } from 'mobx';
 import axios, { AxiosError, isAxiosError } from 'axios';
 
 import { IAuthResponse, IUser } from '../types/users';
@@ -13,7 +13,12 @@ export default class Store {
   isOpenMenu = false;
 
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this , {
+      user: observable,
+      isAuth: observable,
+      alert: observable,
+      isOpenMenu: observable
+    });
   }
 
   setAuth(bool: boolean) {
@@ -44,7 +49,7 @@ export default class Store {
       }
     }
   }
-
+  
   async registration(email: string, password: string) {
     try {
       const response = await UserService.registration(email, password);
@@ -83,10 +88,12 @@ export default class Store {
       localStorage.setItem('token', response.data.accessToken);
       this.setAuth(true);
       this.setUser(response.data.user);
+      return true
     } catch (e) {
       if (isAxiosError<AxiosError<ErrorData>>(e)) {
         this.setAlert(true, e.response?.data.message);
         console.log(e.response?.data);
+        return false;
       }
     }
   }

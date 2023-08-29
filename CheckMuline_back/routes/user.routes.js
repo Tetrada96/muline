@@ -5,7 +5,7 @@ module.exports = app => {
 
   var router = require("express").Router();
 
-  router.get("/", authMiddleware, user.getUsers);
+  router.get("/", authMiddleware, user.getUser);
 
   router.get(`/:userId/colors`, color.findAll );
 

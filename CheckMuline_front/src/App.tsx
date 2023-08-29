@@ -12,26 +12,33 @@ import { Alert } from './components/Alert/Alert';
 import './index.scss';
 import { Menu } from './fragments/Menu/Menu';
 import { FlexBlock } from './components/FlexBlock/FlexBlock';
+import { getUser } from './services/users';
 
 function App() {
   const navigate = useNavigate();
 
   const { store } = useContext(Context);
 
+  const isShow = localStorage.getItem('token') && store.user.id;
+
   useEffect(() => {
-    if (localStorage.getItem('token')) {
-      store.checkAuth();
-      return;
+    if (!store.user.id) {
+      getUser().then((res) => {
+        store.setUser(res.data)
+      }).catch(() => {
+        navigate('/');
+      });
     }
-    navigate('/');
   }, [store.user.id]);
+
+  console.log(store)
 
   return (
     <div className="App">
-      <Header hideMenu={!store.user.id} />
+      <Header hideMenu={!isShow} />
       <Alert />
       <FlexBlock className="WrapperContent">
-        <Menu hide={!store.user.id} />
+        <Menu hide={!isShow} />
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route

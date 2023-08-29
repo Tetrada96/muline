@@ -23,6 +23,7 @@ services:
     volumes:
       # copy the sql script to create tables
       - ./CheckMuline_back/sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - ../data:/var/lib/postgresql/data
 
   app:
     # networks:

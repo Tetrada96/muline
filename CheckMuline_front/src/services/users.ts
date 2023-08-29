@@ -16,6 +16,6 @@ export const logout = (): Promise<void> => {
   return $api.post('/logout');
 };
 
-export const getUsers = (): Promise<AxiosResponse<IUser[]>> => {
-  return $api.get<IUser[]>('/users');
+export const getUser = (): Promise<AxiosResponse<IUser>> => {
+  return $api.get<IUser>('/users');
 };
