@@ -5,9 +5,9 @@ class ColorController {
    async checkColors(req,res,next) {
     try{
       const userId = req.params.userId;
-      const colordmc = req.body.colors;
+      const colorName = req.body.colors;
       let colorsWithCount = await colorService.findColorsByUser(userId);
-      let colors = colordmc.map((colorReq) => colorsWithCount.map(c => c.dmc).includes(colorReq) ? colorsWithCount.find(cwc => cwc.dmc === colorReq) : {dmc: colorReq, error: 'Такого цвета нет'});
+      let colors = colorName.map((colorReq) => colorsWithCount.map(c => c.name).includes(colorReq) ? colorsWithCount.find(cwc => cwc.name === colorReq) : {name: colorReq, error: 'Такого цвета нет'});
       colors = colors.length === 0 ? colorsWithCount : colors;
       res.json(colors )
     }
@@ -31,9 +31,9 @@ class ColorController {
   async changeColorCount(req,res,next) {
     try{
       const userId = req.params.userId;
-      const colordmc = req.params.colorId;
+      const colorName = req.params.colorId;
       const newCount = req.body.count;
-      const color = await colorService.findColorByDMC(colordmc);
+      const color = await colorService.findColorByName(colorName);
       await userColorService.changeCount(newCount, userId, color.id);
       res.json()
   
@@ -46,8 +46,8 @@ class ColorController {
   async changeNeedBuyColors(req,res,next) {
     try{
       const userId = req.params.userId;
-      const colorsdmc = req.body.colors;
-      const colors = await colorService.findAllColorsByDMC(colorsdmc);
+      const colorsName = req.body.colors;
+      const colors = await colorService.findAllColorsByName(colorsName);
       const existedColors = await userColorService.changeNeedBuyColors(userId, colors.map(item => item.id));
       res.json(existedColors)
   

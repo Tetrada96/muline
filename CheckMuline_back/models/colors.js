@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   Colors.init({
     color: DataTypes.STRING,
     name_color_eng: DataTypes.STRING,
-    dmc: DataTypes.STRING,
+    name: DataTypes.STRING,
     name_color_ru: DataTypes.STRING
   }, {
     sequelize,

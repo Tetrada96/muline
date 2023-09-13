@@ -15,7 +15,7 @@ module.exports = {
       name_color_eng: {
         type: Sequelize.STRING
       },
-      dmc: {
+      name: {
         type: Sequelize.STRING
       },
       name_color_ru: {

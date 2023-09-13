@@ -12,12 +12,12 @@ CREATE TABLE IF NOT EXISTS Users (
 CREATE TABLE IF NOT EXISTS Colors (
   id SERIAL NOT NULL PRIMARY KEY,
   color varchar(255) NOT NULL,
-	dmc varchar(255) NOT NULL,
+	name varchar(255) NOT NULL,
 	name_color_eng varchar(255) NOT NULL,
 	name_color_ru varchar(255) NOT NULL
 );
 
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#FFFFFF','blanc','White','Белый'),
 	 ('#E9E9D4','Ecru','Ecru','Кремовый'),
 	 ('#FFFFFF','B5200','Ultra white','Белоснежный'),
@@ -28,7 +28,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#4D2E3D','154','Grape — vy dk','Красного винограда, оч. Т. '),
 	 ('#908BC3','155','Blue Violet — med dk','Сине-фиолетовый, ср. Т. '),
 	 ('#8B9AC5','156','Blue Violet — med lt','Сине-фиолетовый, ср. Св. ');
-INSERT INTO Colors (color,dmc,name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name,name_color_eng,name_color_ru) VALUES
 	 ('#ABC2DE','157','Cornflower Blue — vy lt','Васильковый, кобальтовый, оч. Св. '),
 	 ('#465082','158','Cornflower Blue-med vy dk','Васильковый, кобальтовый, ср. Оч. Т. '),
 	 ('#A7B4CD','159','Gray Blue-lt','Серо-синий, св. '),
@@ -39,7 +39,7 @@ INSERT INTO Colors (color,dmc,name_color_eng,name_color_ru) VALUES
 	 ('#9FCC8D','164','Forest Green-lt','Зеленый лесной, св. '),
 	 ('#DAD878','165','Moss Green-vylt','Мох, оч. Св. '),
 	 ('#BFBB20','166','Moss Green-med lt','Мох, ср. Св. ');
-INSERT INTO Colors (color,dmc,name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name,name_color_eng,name_color_ru) VALUES
 	 ('#9F8447','167','Yellow Beige-vy dk','Желтовато-бежевый, оч. Т. '),
 	 ('#B4C3C1','168','Pewter-vy lt','Оловянный, оч. Св. '),
 	 ('#8B9A94','169','Pewter-lt','Оловянный, св. '),
@@ -50,7 +50,7 @@ INSERT INTO Colors (color,dmc,name_color_eng,name_color_ru) VALUES
 	 ('#884238','221','Shel lPink-vy dk','Розовых ракушек, оч. Т. '),
 	 ('#BB817B','223','Shell Pink-lt','Розовых ракушек, св. '),
 	 ('#DFB3A6','224','ShellPink-vy lt','Розовых ракушек, оч. Св. ');
-INSERT INTO Colors (color,dmc,name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name,name_color_eng,name_color_ru) VALUES
 	 ('#784E24','225','ShellPink-ultra vy lt','Розовых ракушек, ультра св. '),
 	 ('#784E24','300','Mahogany-vy dk','Красного дерева, оч. Т. '),
 	 ('#AA6730','301','Mahogany-med','Красного дерева, ср. '),
@@ -61,7 +61,7 @@ INSERT INTO Colors (color,dmc,name_color_eng,name_color_ru) VALUES
 	 ('#30506F','311','Navy Blue-med','Темно-синий, ср. '),
 	 ('#386189','312','Navy Blue-lt','Темно-синий, св. '),
 	 ('#8E5D5C','315','Antique Mauve-med dk','Античный розовато-лиловый, ср. Т. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#BF889C','316','Antique Mauve-med','Античный розовато-лиловый, ср. '),
 	 ('#697275','317','Pewter Grey','Оловянносерый'),
 	 ('#A0A7B0','318','Steel Grey-lt','Стальной, св. '),
@@ -72,7 +72,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#a92332','326','Rose-vy dk','Розы, оч. Т. '),
 	 ('#723657','327','Violet-vy dk','Фиолетовый, оч. Т. '),
 	 ('#6c5086','333','BlueViolet-vy dk','Сине-фиолетовый, оч. Т. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#4c698c','334','BabyBlue-med','Нежноголубой, ср. '),
 	 ('#e56d7f','335','Rose','Розы'),
 	 ('#0c1225','336','Navy Blue','Темно-синий'),
@@ -83,7 +83,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#e46647','350','Coral-med','Кораллово красный, ср. '),
 	 ('#f78465','351','Coral','Кораллово красный'),
 	 ('#f69d80','352','Coral-lt','Коралловокрасный, св. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#fdbca1','353','Peach','Персиковый'),
 	 ('#9a3b2d','355','TerraCotta-dk','Терракотовый, т. '),
 	 ('#a06757','356','TerraCotta-med','Терракотовый, ср. '),
@@ -94,7 +94,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#a08f4d','371','Mustard','Горчичный'),
 	 ('#9c8c4a','372','Mustard — lt','Горчичный, св. '),
 	 ('#934d29','400','Mahogany — dk','Красного дерева, т. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#e8a76d','402','Mahogany — vy lt','Красного дерева, оч. Св. '),
 	 ('#c49a87','407','Desert Sand — dk','Пустынного песка, т. '),
 	 ('#535657','413','Pewter Grey — dk','Оловянно серый, т. '),
@@ -105,7 +105,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#775437','433','Brown — med','Коричневый, ср. '),
 	 ('#b78237','434','Brown — lt','Коричневый, св. '),
 	 ('#c4863a','435','Brown — vy lt','Коричневый, оч. Св. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#c09557','436','Tan','Желто-коричневый'),
 	 ('#d9b879','437','Tan — lt','Желто-коричневый, св. '),
 	 ('#f5d500','444','Lemon — dk','Лимонный, т. '),
@@ -116,7 +116,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#798738','469','Avocado Green','Авокадо'),
 	 ('#98a859','470','Avocado Green — lt','Авокадо, св. '),
 	 ('#929937','471','Avocado Green — vy lt','Авокадо, оч. Св. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#dee077','472','Avocado Green — ultra lt','Авокадо, ультра св. '),
 	 ('#98232c','498','Christmas Red — dk','Рождественский красный, т. '),
 	 ('#14361e','500','Blue Green — vy dk','Сине-зеленый, оч. Т. '),
@@ -127,7 +127,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#418253','505','Jade','Нефрит'),
 	 ('#166d92','517','Wedgwood — dk','Пыльно-синий, т. '),
 	 ('#6b9cb9','518','Wedgwood — lt','Пыльно-синий, св. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#a8c6d8','519','Sky Blue','Небесно голубой'),
 	 ('#4f6035','520','Fern Green — dk','Папоротниковый, т. '),
 	 ('#93a181','522','Fern Green','Папоротниковый'),
@@ -138,7 +138,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#541244','550','Violet — vy dk','Фиолетовый, оч. Т. '),
 	 ('#7b3f6c','552','Violet — med','Фиолетовый, ср. '),
 	 ('#a772a4','553','Violet','Фиолетовый');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#ae99b1','554','Violet — lt','Фиолетовый, св. '),
 	 ('#377557','561','Jade — vy dk','Нефрит, оч. Т. '),
 	 ('#599b6d','562','Jade — med','Нефрит, ср. '),
@@ -149,7 +149,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#70aeb4','597','Turquoise','Бирюзовый'),
 	 ('#97ccca','598','Turquoise — lt','Бирюзовый, св. '),
 	 ('#bf1c48','600','Cranberry — vy dk','Клюквенный, оч. Т. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#d34067','601','Cranberry — dk','Клюквенный, т. '),
 	 ('#ca0b51','602','Cranberry — med','Клюквенный, ср. '),
 	 ('#ef7ba1','603','Cranberry','Клюквенный'),
@@ -160,7 +160,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#806638','610','Drab Brown — vy dk','Тускло-коричневый, оч. Т. '),
 	 ('#9e9072','611','Drab Brown — dk','Тускло-коричневый, т. '),
 	 ('#917d4a','612','Drab Brown — med','Тускло-коричневый, ср. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#bcae83','613','Drab Brown — lt','Тускло-коричневый, св. '),
 	 ('#8c593e','632','Desert Sand — ultra vy dk','Пустынного песка, ультра т. '),
 	 ('#938962','640','Beige Grey — vy dk','Бежево-серый, оч. Т. '),
@@ -171,7 +171,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#abafa3','647','Beaver Grey — med','Боброво-серый, ср. '),
 	 ('#babfad','648','Beaver Grey — lt','Боброво-серый, св. '),
 	 ('#d12627','666','Christmas Red — bright','Рождественский красный, яркий');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#eed7a1','676','Old Gold — lt','Старого золота, св. '),
 	 ('#ede0ba','677','Old Gold — vy lt','Старого золота, оч. Св. '),
 	 ('#af8334','680','Old Gold — dk','Старого золота, т. '),
@@ -182,7 +182,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#81b85e','703','Chartreuse','Бледно-зеленый'),
 	 ('#bad765','704','Chartreuse — bright','Бледно-зеленый, яркий'),
 	 ('#e1e1d9','712','Cream','Кремовый');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#9f2d6f','718','Plum','Сливовый'),
 	 ('#ec6810','720','Orange Spice — dk','Красновато-рыжеватый, т. '),
 	 ('#e4752b','721','Orange Spice — med','Красновато-рыжеватый, ср. '),
@@ -193,7 +193,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#ecbf3b','728','Topaz','Топаз'),
 	 ('#cc993d','729','Old Gold — med','Старого золота, ср. '),
 	 ('#746d2b','730','Olive Green — vy dk','Оливково-зеленый, оч. Т. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#837d2f','731','Olive Green — dk','Оливково-зеленый, т. '),
 	 ('#91852a','732','Olive Green','Оливково-зеленый'),
 	 ('#a6a036','733','Olive Green — med','Оливково-зеленый, ср. '),
@@ -204,7 +204,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#f69726','741','Tangerine — med','Мандариновый, ср. '),
 	 ('#ffc33a','742','Tangerine — lt','Мандариновый, св. '),
 	 ('#ffda5a','743','Yellow — med','Желтый, ср. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#ffe276','744','Yellow — pale','Желтый, бледный'),
 	 ('#ffeda9','745','Yellow — lt pale','Желтый, бледно св. '),
 	 ('#f5f0df','746','Off White','Белесый'),
@@ -215,7 +215,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#f4c4c1','761','Salmon — lt','Лососевый, св. '),
 	 ('#e9e9eb','762','Pearl Grey — vy lt','Жемчужно серый, оч. Св. '),
 	 ('#f3f6d4','772','Yellow Green — vy lt','Желто-зеленый, оч. Св. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#ceddea','775','Baby Blue — vy lt','Нежно голубой, оч. Св. '),
 	 ('#eeaeb0','776','Pink — med','Розовый, ср. '),
 	 ('#8a373b','777','Raspberry — vy dk','Малина оч. Т'),
@@ -226,7 +226,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#b38132','782','Topaz — dk','Топаз, т. '),
 	 ('#d19d2f','783','Topaz — med','Топаз, ср. Т. '),
 	 ('#161151','791','Cornflower Blue — vy dk','Васильковый, кобальтовый, оч. Т. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#7971a0','792','Cornflower Blue — dk','Васильковый, кобальтовый, т. '),
 	 ('#686d8d','793','Cornflower Blue — med','Васильковый, кобальтовый, ср. '),
 	 ('#8ea7c0','794','Cornflower Blue — lt','Васильковый, кобальтовый, св. Т. '),
@@ -237,7 +237,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#c1d3df','800','Delft — pale','Фарфоровый, бледный'),
 	 ('#63461f','801','Coffee Brown — dk','Кофейный, т. '),
 	 ('#437490','806','Peacock Blue — dk','Переливчатый синий, т. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#70a8b3','807','Peacock Blue','Переливчатый синий'),
 	 ('#6c91c0','809','Delft','Фарфоровый'),
 	 ('#91b4ce','813','Blue — lt','Синий, св. '),
@@ -248,7 +248,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#f9d6dd','818','Baby Pink','Нежно розовый'),
 	 ('#fbe2df','819','Baby Pink — lt','Нежно розовый, св. '),
 	 ('#190f60','820','Royal Blue — vy dk','Чисто синий, оч. Т. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#e2dfd3','822','Beige Grey — lt','Бежево-серый, св. '),
 	 ('#124477','823','Navy Blue — dk','Темно-синий, т. '),
 	 ('#3b6292','824','Blue — vy dk','Синий, оч. Т. '),
@@ -259,7 +259,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#6f5422','829','Golden Olive — vy dk','Оливково-золотой, оч. Т. '),
 	 ('#806c26','830','Golden Olive — dk','Оливково-золотой, т. '),
 	 ('#957b2f','831','Golden Olive — med','Оливково-золотой, ср. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#b19a3f','832','Golden Olive','Оливково-золотой'),
 	 ('#bfa43a','833','Golden Olive — lt','Оливково-золотой, св. '),
 	 ('#cab751','834','Golden Olive — vy lt','Оливково-золотой, оч. Св. '),
@@ -270,7 +270,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#cdb9a4','842','Beige Brown — vy lt','Бежево-коричневый, оч. Св. '),
 	 ('#6c6e58','844','Beaver Grey — ultra dk','Боброво-серый, ультра т. '),
 	 ('#775820','869','Hazelnut Brown — vy dk','Фундука, оч. Т. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#043810','890','Pistachio Green — ultra dk','Фисташково зеленый, ультра т. '),
 	 ('#ef4949','891','Carnation — dk','Гвоздичный, т. '),
 	 ('#f85b64','892','Carnation — med','Гвоздичный, ср. '),
@@ -281,7 +281,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#ee8593','899','Rose — med','Розы, ср. '),
 	 ('#d45d28','900','Burnt Orange — dk','Оранжево-жженный, т. '),
 	 ('#6b3b33','902','Garnet — vy dk','Гранатовый, оч. Т. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#4f6c33','904','Parrot Green — vy dk','Зеленый попугаевый, оч. Т. '),
 	 ('#759a3e','905','Parrot Green — dk','Зеленый попугаевый, т. '),
 	 ('#82ae44','906','Parrot Green — med','Зеленый попугаевый, ср. '),
@@ -292,7 +292,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#58a96b','912','Emerald Green — lt','Изумрудный, св. '),
 	 ('#88c78d','913','Nile Green — med','Мутно-зеленый, ср. '),
 	 ('#800137','915','Plum — dk','Сливовый, т. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#832a58','917','Plum — med','Сливовый, ср. '),
 	 ('#8c3b1a','918','Red Copper — dk','Красной меди, т. '),
 	 ('#9b3b1b','919','Red Copper','Красной меди'),
@@ -303,7 +303,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#789899','926','Grey Green — med','Серо-зеленый, ср. '),
 	 ('#c5d2cf','927','Grey Green — lt','Серо-зеленый, св. '),
 	 ('#e5eae9','928','Grey Green — vy lt','Серо-зеленый, оч. Св. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#435e67','930','Antique Blue — dk','Античный синий, т. '),
 	 ('#678997','931','Antique Blue — med','Античный синий, ср. '),
 	 ('#8faeb9','932','Antique Blue — lt','Античный синий, св. '),
@@ -314,7 +314,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#3b2811','938','Coffee Brown — ultra dk','Кофейный, ультра т. '),
 	 ('#02101c','939','Navy Blue — vy dk','Темно-синий, оч. Т. '),
 	 ('#009a7b','943','Aquamarine — med','Аквамарин, ср. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#e3be8e','945','Tawny','Рыжевато-коричневый'),
 	 ('#e15729','946','Burnt Orange — med','Оранжево-жженный, ср. '),
 	 ('#f26922','947','Burnt Orange','Оранжево-жженный'),
@@ -325,7 +325,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#b4e8b3','955','Nile Green — lt','Мутно-зеленый, св. '),
 	 ('#ff7a90','956','Geranium','Герань'),
 	 ('#f9afb7','957','Geranium — pale','Герань, бледный');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#51c0bb','958','Seagreen — dk','Морской воды, т. '),
 	 ('#8fd3d4','959','Seagreen — med','Морской воды, ср. '),
 	 ('#df6877','961','Dusty Rose — dk','Пыльной розы, т. '),
@@ -336,7 +336,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#fbdbcd','967','Apricot — vy lt','Абрикосовый оч. Св. '),
 	 ('#ff781e','970','Pumpkin — bright','Тыквенный, яркий'),
 	 ('#fc7e0c','971','Pumpkin','Тыквенный');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#ffb401','972','Canary — deep','Канареечный, глубокий'),
 	 ('#ffe21a','973','Canary — bright','Канареечный, яркий'),
 	 ('#945c2d','975','Golden Brown — dk','Золотисто-коричневый, т. '),
@@ -347,7 +347,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#76996c','988','Forest Green — med','Зеленый лесной, ср. '),
 	 ('#87a462','989','Forest Green','Зеленый лесной'),
 	 ('#176a59','991','Aquamarine — dk','Аквамарин, т. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#6cbfa8','992','Aquamarine — lt','Аквамарин, св. '),
 	 ('#8ec2b3','993','Aquamarine — vy lt','Аквамарин, оч. Св. '),
 	 ('#0064b0','995','Electric Blue — dk','Электрик синий, т. '),
@@ -358,7 +358,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#3b2e08','3021','Brown Grey — vy dk','Коричнево-серый, оч. Т. '),
 	 ('#938e6e','3022','Brown Grey — med','Коричнево-серый, ср. '),
 	 ('#b2ae95','3023','Brown Grey — lt','Коричнево-серый, св. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#dcdcd7','3024','Brown Grey — vy lt','Коричнево-серый, оч. Св. '),
 	 ('#442e10','3031','Mocha Brown — vy dk','Мокка, оч. Т. '),
 	 ('#ada183','3032','Mocha Brown — med','Мокка, ср. '),
@@ -369,7 +369,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#ccbc7d','3046','Yellow Beige — med','Желтовато-бежевый, ср. '),
 	 ('#ececd2','3047','Yellow Beige — lt','Желтовато-бежевый, св. '),
 	 ('#6d6f42','3051','Green Grey — dk','Серо-зеленый, т. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#899770','3052','Green Grey — med','Серо-зеленый, ср. '),
 	 ('#bac28b','3053','Green Grey','Серо-зеленый'),
 	 ('#cda072','3064','Desert Sand','Пустынного песка'),
@@ -380,7 +380,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#c36154','3328','Salmon — dk','Лососевый, т. '),
 	 ('#f38351','3340','Apricot — med','Абрикосовый, ср. '),
 	 ('#fbbe9d','3341','Apricot','Абрикосовый');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#486131','3345','Hunter Green — dk','Защитный, грязновато зеленый, т. '),
 	 ('#6a823d','3346','Hunter Green','Защитный, грязновато зеленый'),
 	 ('#78983b','3347','Yellow Green — med','Желто-зеленый, ср. '),
@@ -391,7 +391,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#72885f','3363','Pine Green — med','Сосновый, ср. '),
 	 ('#85905c','3364','Pine Green','Сосновый'),
 	 ('#2d1705','3371','Black Brown','Черно-коричневый');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#b34e8c','3607','Plum — lt','Сливовый, св. '),
 	 ('#c07ba3','3608','Plum — vy lt','Сливовый, оч. Св. '),
 	 ('#e9afd3','3609','Plum — ultra lt','Сливовый, ультра св. '),
@@ -402,7 +402,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#f65d5b','3705','Melon — dk','Дыни, т. '),
 	 ('#ff988e','3706','Melon — med','Дыни, ср. '),
 	 ('#fcbbc1','3708','Melon — lt','Дыни, св. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#db7d73','3712','Salmon — med','Лососевый, ср. '),
 	 ('#fcdcda','3713','Salmon — vy lt','Лососевый, оч. Св. '),
 	 ('#fcb1ba','3716','Dusty Rose — vy lt','Пыльной розы, оч. Св. '),
@@ -413,7 +413,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#c65a6b','3731','Dusty Rose — vy dk','Пыльной розы, оч. Т. '),
 	 ('#eda6ac','3733','Dusty Rose','Пыльной розы'),
 	 ('#72535a','3740','Antique Violet — dk','Антично фиолетовый, т. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#c7bac7','3743','Antique Violet — vy lt','Антично фиолетовый, оч. Св. '),
 	 ('#8572a4','3746','Blue Violet — dk','Сине-фиолетовый, т. '),
 	 ('#bcc0d8','3747','Blue Violet — vy lt','Сине-фиолетовый, оч. Св. '),
@@ -424,7 +424,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#e8edf3','3756','Baby Blue — ultra vy lt','Нежно голубой, ультра св. '),
 	 ('#4f819d','3760','Wedgwood — med','Пыльно-синий, ср. (гжель)'),
 	 ('#b8dae9','3761','Sky Blue — lt','Небесно голубой, св. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#296e87','3765','Peacock Blue — vy dk','Переливчатый синий, оч. Т. '),
 	 ('#7cbec6','3766','Peacock Blue — lt','Переливчатый синий, св. '),
 	 ('#6b8084','3768','Grey Green — dk','Серо-зеленый'),
@@ -435,7 +435,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#f6e1d0','3774','Desert Sand — vy lt','Пустынного песка, оч. Св. '),
 	 ('#c27d45','3776','Mahogany — lt','Красного дерева, св. '),
 	 ('#892b21','3777','Terra Cotta — vy dk','Терракотовый, оч. Т. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#c4856f','3778','Terra Cotta — lt','Терракотовый, св. '),
 	 ('#f2c6b8','3779','Terra Cotta — ultra vy lt','Терракотовый, ультра св. '),
 	 ('#5c4c2d','3781','Mocha Brown — dk','Мокка, т. '),
@@ -446,7 +446,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#e65952','3801','Christmas Red — lt','Рождественский красный, св. '),
 	 ('#6f2e35','3802','Antique Mauve — vy dk','Античный розовато-лиловый, оч. Т. '),
 	 ('#863248','3803','Mauve — dk','Розовато-лиловый, т. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#c33c62','3804','Cyclamen Pink — dk','Розового цикламена, т. '),
 	 ('#ce507f','3805','Cyclamen Pink','Розового цикламена'),
 	 ('#f19ac2','3806','Cyclamen Pink — lt','Розового цикламена, св. '),
@@ -457,7 +457,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#c4e7e8','3811','Turquoise — vy lt','Бирюзовый, оч. Св. '),
 	 ('#008679','3812','Seagreen — vy dk','Морской воды, оч. Т. '),
 	 ('#b8cebe','3813','Blue Green — lt','Сине-зеленый, св. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#3f8878','3814','Aquamarine','Аквамарин'),
 	 ('#538a6d','3815','Celadon Green — dk','Серовато-зеленый, т. '),
 	 ('#699d85','3816','Celadon Green','Серовато-зеленый'),
@@ -468,7 +468,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#e2b73a','3821','Straw','Соломенный'),
 	 ('#f1d863','3822','Straw — lt','Соломенный, св. '),
 	 ('#fffcdc','3823','Yellow — ultra pale','Желтый, ультра бледный');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#fbccb8','3824','Apricot — lt','Абрикосовый, св. '),
 	 ('#fdc391','3825','Pumpkin — pale','Тыквенный, бледный'),
 	 ('#c38c55','3826','Golden Brown','Золотовато-коричневый'),
@@ -479,7 +479,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#b33034','3831','Raspberry — dk','Малиновый, т. '),
 	 ('#b33034','3832','Raspberry — med','Малиновый, ср. '),
 	 ('#e8868c','3833','Raspberry — lt','Малиновый, св. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#642441','3834','Grape — dk','Красного винограда, т. '),
 	 ('#784775','3835','Grape — med','Красного винограда, ср. '),
 	 ('#c1aec2','3836','Grape — lt','Красного винограда, св. '),
@@ -490,7 +490,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#cbdde7','3841','Baby Blue — pale','Нежно голубой, бледный'),
 	 ('#12557e','3842','Wedgwood — dk','Пыльно-синий, т. '),
 	 ('#0095d3','3843','Electric Blue','Волнующе синий');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#0095d3','3844','Bright Turquoise — dk','Ярко-бирюзовый, т. '),
 	 ('#01cbec','3845','Bright Turquoise — med','Ярко-бирюзовый, ср. '),
 	 ('#63d3e1','3846','Bright Turquoise — lt','Ярко-бирюзовый, св. '),
@@ -501,7 +501,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#56b69c','3851','Bright Green — lt','Ярко-зеленый, св. '),
 	 ('#cc972b','3852','Straw — vy dk','Соломенный, оч. Т. '),
 	 ('#fc9749','3853','Autumn Gold — dk','Золотой осенний, т. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#f7b25c','3854','Autumn Gold — med','Золотой осенний, ср. '),
 	 ('#f7ca84','3855','Autumn Gold — lt','Золотой осенний, св. '),
 	 ('#ebbc9a','3856','Mahogany — ultra vy lt','Красного дерева, ультра св. '),
@@ -512,7 +512,7 @@ INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
 	 ('#9e887f','3861','Cocoa — lt','Какао, св. '),
 	 ('#845f2e','3862','Mocha Beige — dk','Темно-коричневый бежевый, т. '),
 	 ('#a4866c','3863','Mocha Beige — med','Темно-коричневый бежевый, ср. ');
-INSERT INTO Colors (color,dmc, name_color_eng,name_color_ru) VALUES
+INSERT INTO Colors (color,name, name_color_eng,name_color_ru) VALUES
 	 ('#c9af93','3864','Mocha Beige — lt','Темно-коричневый бежевый, св. '),
 	 ('#faf9f5','3865','Winter White','Снежно белый'),
 	 ('#e7e5dd','3866','Mocha Brown — ultra vy lt','Мокка, ультра св. ');

@@ -15,20 +15,20 @@ class ColorService {
       "id": color.id,
       "color": color.color,
       "name_color_eng": color.name_color_eng,
-      "dmc": color.dmc,
+      "name": color.name,
       "name_color_ru": color.name_color_ru,
       "count": color.user_color.count,
 			"need_buy": color.user_color.need_buy
       }});
 	}
 
-	async findColorByDMC(dmc) {
-		const color = await ColorModel.findOne({where: {dmc}});
+	async findColorByName(name) {
+		const color = await ColorModel.findOne({where: {name}});
 		return color;
 	}
 
-	async findAllColorsByDMC(dmc) {
-		const colors = await ColorModel.findAll({where: {dmc: {[Op.in]: dmc}}});
+	async findAllColorsByName(name) {
+		const colors = await ColorModel.findAll({where: {name: {[Op.in]: name}}});
 		return colors;
 	}
 }

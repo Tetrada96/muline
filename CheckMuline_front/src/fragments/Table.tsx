@@ -51,13 +51,13 @@ export const Table = ({
     <FlexBlock showAllHeight>
       <div className={styles.tableWrapper}>
         {errorColor.length !== 0
-          ? errorColor.map((item) => <div key={item.dmc}>{`${item.dmc} такого цвета нет в таблице`}</div>)
+          ? errorColor.map((item) => <div key={item.name}>{`${item.name} такого цвета нет в таблице`}</div>)
           : null}
         {successColor.length !== 0 ? (
           <table className={styles.table}>
             <thead className={styles.thead}>
               <Tr isHead>
-                <Td>dmc</Td>
+                <Td>Номер</Td>
                 <Td>Цвет</Td>
                 <Td className={styles.TdHide}>Color</Td>
                 <Td className={styles.TdHide}>Наименование</Td>
@@ -68,7 +68,7 @@ export const Table = ({
               {successColor.map((item: IColor) => {
                 return (
                   <Tr needBye={item.need_buy} key={item.id}>
-                    <Td className={styles.Td}>{item.dmc}</Td>
+                    <Td className={styles.Td}>{item.name}</Td>
                     <Td className={styles.Td} style={{ backgroundColor: item.color }}></Td>
                     <Td className={styles.TdHide} style={{ width: '250px' }}>
                       {item.name_color_eng}
@@ -81,7 +81,7 @@ export const Table = ({
                         className={styles.tableInput}
                         type="number"
                         value={item.count}
-                        onChange={(e) => onChangeCount(e, item.dmc)}
+                        onChange={(e) => onChangeCount(e, item.name)}
                       />
                     </Td>
                   </Tr>
