@@ -22,6 +22,7 @@ export const Header = observer(({ children, hideMenu }: { children?: JSX.Element
           ) : (
             <></>
           )}
+          <div id='vk_auth'></div>
           <div>Сундучок сокровищ</div>
         </FlexBlock>
         {children}
