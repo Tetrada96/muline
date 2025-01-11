@@ -37,7 +37,7 @@ class UserService {
 	async login(payload) {
 		const response = await fetch('https://id.vk.com/oauth2/auth', {
 			method: 'POST',
-			body: JSON.stringify(payload)
+			body: `grant_type = authorization_code&codeVerifier=${payload.codeVerifier}&code=${payload.code}&client_id=52910357&device_id=${payload.device_id}`
 		})
 
 		const tokens = response.json()

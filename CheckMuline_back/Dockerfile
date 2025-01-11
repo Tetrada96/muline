@@ -1,7 +1,7 @@
-FROM node:16.15-alpine3.14
+FROM node:18.20
 WORKDIR /app
-ADD package.json package.json
-RUN npm install
+COPY package.json package.json
+RUN npm i
 COPY . .
 
 EXPOSE 8080
