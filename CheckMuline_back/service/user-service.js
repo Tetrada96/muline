@@ -12,12 +12,12 @@ const ApiError = require('../exceptions/api-error');
 
 class UserService {
 	async registration(user_id, refresh_token) {
-		const candidate = await UserModel.findOne({where: {email:user_id}});
+		const candidate = await UserModel.findOne({where: {user_id:user_id}});
 		if (candidate) {
-			throw ApiError.BadRequest(`Пользователь с почтовым адресом ${email} уже существует`);
+			throw ApiError.BadRequest(`Пользователь с почтовым адресом ${user_id} уже существует`);
 			return;
 		}
-		const user = await UserModel.create({email: user_id});
+		const user = await UserModel.create({user_id});
 
 		const userDto = new UserDto(user);
 		await this.addColor(userDto.id);
@@ -53,7 +53,7 @@ class UserService {
 
 		const tokens = await response.json()
 
-		const user = await UserModel.findOne({ where: { email: tokens.user_id } });
+		const user = await UserModel.findOne({ where: { user_id: tokens.user_id } });
 		console.log(user)
 		if (!user) {
 			const user = registration(tokens.user_id, tokens.refresh_token)
