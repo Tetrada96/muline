@@ -49,7 +49,6 @@ class UserService {
 				'redirect_uri': 'https://mulinehub.ru'
 			})
 		})
-		console.log(await response.json())
 
 		const tokens = await response.json()
 
