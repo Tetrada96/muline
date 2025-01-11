@@ -73,8 +73,9 @@ class UserService {
 				'id_token': tokens.id_token,
 			})
 		})
+		const userInfo = await userInfoRequest.json();
 
-		return await { ...userInfoRequest.json(), accessToken: tokens.access_token };
+		return await { ...userInfo, accessToken: tokens.access_token };
 	}
 
 	async logout(refreshToken) {
