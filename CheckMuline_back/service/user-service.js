@@ -42,7 +42,7 @@ class UserService {
 			},
 			body:  new URLSearchParams({
 				'grant_type': 'authorization_code',
-				'codeVerifier': payload.codeVerifier,
+				'code_verifier': payload.codeVerifier,
 				'code': payload.code,
 				'client_id': 52910357,
 				'device_id': payload.device_id,
@@ -54,8 +54,13 @@ class UserService {
 		const tokens = await response.json()
 
 		const user = await UserModel.findOne({ where: { email: tokens.user_id } });
+		console.log(user)
 		if (!user) {
-			registration(tokens.user_id, tokens.refresh_token)
+			const user = registration(tokens.user_id, tokens.refresh_token)
+			return {
+				...tokens,
+				user
+			}
 		}
 		else {
 			const userDto = new UserDto(user);
