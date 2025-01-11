@@ -27,7 +27,7 @@ export const Header = observer(({ children, hideMenu }: { children?: JSX.Element
             <></>
           )}
           <div>Сундучок сокровищ</div>
-          <div id="VkIdSdkOneTap"></div>
+          
         </FlexBlock>
         {children}
         {store.user.id ? (
