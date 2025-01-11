@@ -1,9 +1,6 @@
 CREATE TABLE IF NOT EXISTS Users (
   id SERIAL NOT NULL PRIMARY KEY,
-  email varchar(255) NOT NULL,
-	password varchar(255) NOT NULL,
-	is_activated BOOLEAN NOT NULL,
-	activation_link varchar(255) NOT NULL,
+  user_id SERIAL NOT NULL,
 	created_at date,
 	updated_at date
 );
