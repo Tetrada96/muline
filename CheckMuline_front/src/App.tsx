@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
+import sha256 from 'crypto-js/sha256';
+import * as VKID from '@vkid/sdk';
 
 import { LoginPage } from './pages/LoginPage';
 import { PageColors } from './pages/PageColors';
@@ -12,18 +14,24 @@ import { Alert } from './components/Alert/Alert';
 import './index.scss';
 import { Menu } from './fragments/Menu/Menu';
 import { FlexBlock } from './components/FlexBlock/FlexBlock';
+import {generateRandomString} from './utils'
+import { IAuthVkResponse } from './types/users';
 
-import * as VKID from '@vkid/sdk';
 
 function App() {
 
   const container = document.getElementById('VkIdSdkOneTap');
+
+  const codeVerifier = generateRandomString(45);
+  const codeChallenge =  sha256(codeVerifier).toString()
 
   VKID.Config.init({
     app: 52910357,
     redirectUrl: 'https://mulinehub.ru',
     responseMode: VKID.ConfigResponseMode.Callback,
     source: VKID.ConfigSource.LOWCODE,
+    codeVerifier: codeVerifier,
+    state: generateRandomString(10),
     scope: '', // Заполните нужными доступами по необходимости
   });
 
@@ -31,11 +39,10 @@ function App() {
   
 if (container) {
   // Отрисовка кнопки в контейнере с именем приложения APP_NAME, светлой темой и на русском языке.
-  oneTap.render({ container: container, scheme: VKID.Scheme.LIGHT, lang: VKID.Languages.RUS })
-    .on(VKID.OneTapInternalEvents.LOGIN_SUCCESS, function (payload: { code: string, device_id: string }) {
+  oneTap.render({ container: container, scheme: VKID.Scheme.LIGHT, lang: VKID.Languages.RUS, })
+    .on(VKID.OneTapInternalEvents.LOGIN_SUCCESS, function (payload: IAuthVkResponse) {
 
-    console.log(payload)
-    store.login(payload);
+      store.login({...payload, codeVerifier});
   
    
   })

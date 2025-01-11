@@ -1,7 +1,7 @@
 import { makeAutoObservable, observable } from 'mobx';
 import axios, { AxiosError, isAxiosError } from 'axios';
 
-import { IAuthResponse, IUser } from '../types/users';
+import { IAuthResponse, IAuthVkResponse, IUser } from '../types/users';
 import * as UserService from '../services/users';
 
 import { API_URL, ErrorData } from '../services';
@@ -13,7 +13,7 @@ export default class Store {
   isOpenMenu = false;
 
   constructor() {
-    makeAutoObservable(this , {
+    makeAutoObservable(this, {
       user: observable,
       isAuth: observable,
       alert: observable,
@@ -33,7 +33,7 @@ export default class Store {
     this.isOpenMenu = !this.isOpenMenu;
   }
 
-  async login(payload: { code: string, device_id: string }) {
+  async login(payload: IAuthVkResponse & {codeVerifier: string}) {
     try {
       const response = await UserService.login(payload);
       console.log(this);
