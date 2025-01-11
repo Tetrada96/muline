@@ -55,22 +55,26 @@ class UserService {
 		const tokens = await response.json()
 
 		const user = await UserModel.findOne({ where: { user_id: tokens.user_id } });
-		console.log('user',user)
+		console.log('user', user)
 		if (!user) {
-			const user = this.registration(tokens.user_id, tokens.refresh_token)
-			return {
-				...tokens,
-				user
-			}
+			this.registration(tokens.user_id, tokens.refresh_token)
 		}
 		else {
 			const userDto = new UserDto(user);
 			await tokenService.saveToken(userDto.id, tokens.refreshToken);
-			return {
-				...tokens,
-				user: userDto
-			}
 		}
+		const userInfoRequest = await fetch('https://id.vk.com/oauth2/public_info ', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			},
+			body:  new URLSearchParams({
+				'client_id': 52910357 ,
+				'id_token': tokens.id_token,
+			})
+		})
+
+		return await { ...userInfoRequest.json(), accessToken: tokens.access_token };
 	}
 
 	async logout(refreshToken) {
