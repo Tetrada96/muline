@@ -57,7 +57,7 @@ class UserService {
 		const user = await UserModel.findOne({ where: { user_id: tokens.user_id } });
 		console.log('user',user)
 		if (!user) {
-			const user = registration(tokens.user_id, tokens.refresh_token)
+			const user = this.registration(tokens.user_id, tokens.refresh_token)
 			return {
 				...tokens,
 				user
