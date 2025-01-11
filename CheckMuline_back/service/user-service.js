@@ -37,10 +37,20 @@ class UserService {
 	async login(payload) {
 		const response = await fetch('https://id.vk.com/oauth2/auth', {
 			method: 'POST',
-			body: `grant_type = authorization_code&codeVerifier=${payload.codeVerifier}&code=${payload.code}&client_id=52910357&device_id=${payload.device_id}`
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			},
+			body:  new URLSearchParams({
+				'grant_type': 'authorization_code',
+				'codeVerifier': payload.codeVerifier,
+				'code': payload.code,
+				'client_id': 52910357,
+				'device_id': payload.device_id
+			})
 		})
+		console.log(await response.json())
 
-		const tokens = response.json()
+		const tokens = await response.json()
 
 		const user = await UserModel.findOne({ where: { email: tokens.user_id } });
 		if (!user) {
