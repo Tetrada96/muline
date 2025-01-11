@@ -9,24 +9,20 @@ const UserDto = require('../dtos/user-dto');
 const colorService = require('../service/color-service');
 const ApiError = require('../exceptions/api-error');
 
+
 class UserService {
-	async registration(email, password) {
-		const candidate = await UserModel.findOne({where: {email}});
+	async registration(user_id, refresh_token) {
+		const candidate = await UserModel.findOne({where: {email:user_id}});
 		if (candidate) {
 			throw ApiError.BadRequest(`Пользователь с почтовым адресом ${email} уже существует`);
 			return;
 		}
-		const hashPassword = await bcrypt.hash(password, 3);
-		const activationLink = uuid.v4();
-		const user = await UserModel.create({password: hashPassword, email, activationLink});
-		await mailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`);
-		
+		const user = await UserModel.create({email: user_id});
 
 		const userDto = new UserDto(user);
-		const tokens = tokenService.generateTokens({...userDto});
-		await tokenService.saveToken(userDto.id, tokens.refreshToken);
+		await this.addColor(userDto.id);
+		await tokenService.saveToken(userDto.id, refresh_token);
 		return {
-			...tokens,
 			user: userDto
 		}
 	}
@@ -37,32 +33,26 @@ class UserService {
 		return await UserColorModel.bulkCreate(colors.map(color => {return {'user_id': userId, 'color_id': color.id, count: 0  }}))
 	}
 
-	async activate(activationLink) {
-		const user = await UserModel.findOne({where: {activationLink: activationLink}});
-		if (!user) {
-			throw ApiError.BadRequest('Некорректная ссылка активации');
-		}
-		user.isActivated = true;
-		const userDto = new UserDto(user);
-		await this.addColor(userDto.id);
-		await user.save();
-	}
 
-	async login(email, password) {
-		const user = await UserModel.findOne({where: {email}});
+	async login(payload) {
+		const response = await fetch('https://id.vk.com/oauth2/auth', {
+			method: 'POST',
+			body: JSON.stringify(payload)
+		})
+
+		const tokens = response.json()
+
+		const user = await UserModel.findOne({ where: { email: tokens.user_id } });
 		if (!user) {
-			throw ApiError.BadRequest('Пользователь с таким email не найден');
+			registration(tokens.user_id, tokens.refresh_token)
 		}
-		const isPassEquals = await bcrypt.compare(password, user.password);
-		if (!isPassEquals) {
-			throw ApiError.BadRequest('Неверный логин и/или пароль ');
-		}
-		const userDto = new UserDto(user);
-		const tokens = tokenService.generateTokens({...userDto});
-		await tokenService.saveToken(userDto.id, tokens.refreshToken);
-		return {
-			...tokens,
-			user: userDto
+		else {
+			const userDto = new UserDto(user);
+			await tokenService.saveToken(userDto.id, tokens.refreshToken);
+			return {
+				...tokens,
+				user: userDto
+			}
 		}
 	}
 
@@ -83,7 +73,12 @@ class UserService {
 		}
 		const user = await UserModel.findByPk(userData.id);
 		const userDto = new UserDto(user);
-		const tokens = tokenService.generateTokens({...userDto});
+		const response = await fetch('https://id.vk.com/oauth2/auth', {
+			method: 'POST',
+			body: JSON.stringify(payload)
+		})
+
+		const tokens = response.json()
 		await tokenService.saveToken(userDto.id, tokens.refreshToken);
 		return {
 			...tokens,

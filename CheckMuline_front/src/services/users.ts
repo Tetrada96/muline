@@ -4,8 +4,8 @@ import axios, { AxiosResponse } from 'axios';
 import $api from '.';
 import { IAuthResponse, IUser } from '../types/users';
 
-export const login = (email: string, password: string): Promise<AxiosResponse<IAuthResponse>> => {
-  return $api.post<IAuthResponse>('/login', { email, password });
+export const login = (payload: { code: string, device_id: string }): Promise<AxiosResponse<IAuthResponse>> => {
+  return $api.post<IAuthResponse>('/login', { payload });
 };
 
 export const registration = (email: string, password: string): Promise<AxiosResponse<IAuthResponse>> => {

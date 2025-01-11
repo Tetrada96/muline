@@ -33,9 +33,9 @@ export default class Store {
     this.isOpenMenu = !this.isOpenMenu;
   }
 
-  async login(email: string, password: string) {
+  async login(payload: { code: string, device_id: string }) {
     try {
-      const response = await UserService.login(email, password);
+      const response = await UserService.login(payload);
       console.log(this);
       localStorage.setItem('token', response.data.accessToken);
       this.setAuth(true);

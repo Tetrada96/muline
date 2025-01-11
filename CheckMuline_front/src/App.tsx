@@ -35,12 +35,9 @@ if (container) {
     .on(VKID.OneTapInternalEvents.LOGIN_SUCCESS, function (payload: { code: string, device_id: string }) {
 
     console.log(payload)
-    const code = payload.code;
-    const deviceId = payload.device_id;
+    store.login(payload);
   
-    VKID.Auth.exchangeCode(code, deviceId)
-      .then((res) => console.log('Получение access token', res))
-      .catch((e) => console.log('Ошибка Получение access token',e));
+   
   })
   .on(VKID.WidgetEvents.ERROR, (e: any) => {console.log('Ошибка аутентификации',e)}); // handleError — какой-либо обработчик ошибки.
   };
