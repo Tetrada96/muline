@@ -9,10 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    password: DataTypes.STRING,
-    email: DataTypes.STRING,
-    isActivated: {type: DataTypes.BOOLEAN, defaultValue: false},
-    activationLink: DataTypes.STRING
+    user_id: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'users',
