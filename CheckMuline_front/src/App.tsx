@@ -23,7 +23,6 @@ function App() {
   const container = document.getElementById('VkIdSdkOneTap');
 
   const codeVerifier = generateRandomString(45);
-  const codeChallenge =  sha256(codeVerifier).toString()
 
   VKID.Config.init({
     app: 52910357,
@@ -54,7 +53,7 @@ if (container) {
 
   return (
     <div className="App">
-      <Header hideMenu={!isShow} />
+      <Header  hideMenu={!isShow} />
       <Alert />
       <FlexBlock className="WrapperContent">
         <Menu hide={!isShow} />

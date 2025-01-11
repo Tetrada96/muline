@@ -48,7 +48,7 @@ class UserService {
 				'code': payload.code,
 				'client_id': 52910357,
 				'device_id': payload.device_id,
-				'redirect_uri': 'https://mulinehub.ru'
+				'redirect_uri': 'https://mulinehub.ru/colors'
 			})
 		})
 
