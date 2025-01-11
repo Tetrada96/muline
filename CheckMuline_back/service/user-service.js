@@ -45,7 +45,8 @@ class UserService {
 				'codeVerifier': payload.codeVerifier,
 				'code': payload.code,
 				'client_id': 52910357,
-				'device_id': payload.device_id
+				'device_id': payload.device_id,
+				'redirect_uri': 'https://mulinehub.ru'
 			})
 		})
 		console.log(await response.json())
