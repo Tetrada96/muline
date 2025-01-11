@@ -56,11 +56,12 @@ class UserService {
 
 		const user = await UserModel.findOne({ where: { user_id: tokens.user_id } });
 		console.log('user', user)
+		let userDto = {};
 		if (!user) {
-			this.registration(tokens.user_id, tokens.refresh_token)
+			userDto = this.registration(tokens.user_id, tokens.refresh_token)
 		}
 		else {
-			const userDto = new UserDto(user);
+			userDto = new UserDto(user);
 			await tokenService.saveToken(userDto.id, tokens.refreshToken);
 		}
 		const userInfoRequest = await fetch('https://id.vk.com/oauth2/public_info ', {
@@ -75,7 +76,7 @@ class UserService {
 		})
 		const userInfo = await userInfoRequest.json();
 
-		return await { ...userInfo, accessToken: tokens.access_token };
+		return await { user: { ...userInfo, id:userDto.id }, accessToken: tokens.access_token,  };
 	}
 
 	async logout(refreshToken) {

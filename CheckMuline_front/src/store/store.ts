@@ -33,7 +33,7 @@ export default class Store {
     this.isOpenMenu = !this.isOpenMenu;
   }
 
-  async login(payload: IAuthVkResponse & {codeVerifier: string}) {
+  async login(payload:IAuthVkResponse& {codeVerifier: string}) {
     try {
       const response = await UserService.login(payload);
       console.log(this);

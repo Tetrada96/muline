@@ -18,11 +18,11 @@ export const PageColors = observer(() => {
   };
 
   useEffect(() => {
-    if (!store.user.id) {
+    if (!store.user.user_id) {
       return;
     }
     showAllColors();
-  }, [store.user.id]);
+  }, [store.user.user_id]);
 
   // if (!store.user.id) {
   //   return null;

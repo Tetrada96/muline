@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
-import sha256 from 'crypto-js/sha256';
 import * as VKID from '@vkid/sdk';
 
 import { LoginPage } from './pages/LoginPage';
@@ -52,20 +51,21 @@ if (container) {
   const { store } = useContext(Context);
 
   useEffect(() => {
-    if (!store.user.id) {
+    if (!store.user.user_id) {
       navigate('/')
     }
     else {
       navigate('/colors')
     }
-  }, [store.user.id])
+  }, [store.user.user_id])
 
-  const isShow = localStorage.getItem('token') && store.user.id;
+
+  const isShow = localStorage.getItem('token') && store.user.user_id;
 
   return (
     <div className="App">
       <Header  hideMenu={!isShow} />
-      {!store.user.id && <div style={{ position: 'absolute', right: 0 }} id="VkIdSdkOneTap"></div>}
+      {!store.user.user_id && <div style={{ position: 'absolute', right: 0 }} id="VkIdSdkOneTap"></div>}
       <Alert />
       <FlexBlock className="WrapperContent">
         <Menu hide={!isShow} />

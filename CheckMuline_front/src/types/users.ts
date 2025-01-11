@@ -1,7 +1,8 @@
 export interface IUser {
-  email: string;
+  user_id: string;
+  first_name: string;
+  avatar: string;
   id: string;
-  isActivated: boolean;
 }
 
 export interface IAuthResponse {
