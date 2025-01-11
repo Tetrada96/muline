@@ -51,14 +51,14 @@ if (container) {
   };
   const { store } = useContext(Context);
 
-  // useEffect(() => {
-  //   if (!store.user.id) {
-  //     navigate('/')
-  //   }
-  //   else {
-  //     navigate('/colors')
-  //   }
-  // }, [store.user.id])
+  useEffect(() => {
+    if (!store.user.id) {
+      navigate('/')
+    }
+    else {
+      navigate('/colors')
+    }
+  }, [store.user.id])
 
   const isShow = localStorage.getItem('token') && store.user.id;
 
