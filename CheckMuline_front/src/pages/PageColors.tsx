@@ -24,13 +24,13 @@ export const PageColors = observer(() => {
     showAllColors();
   }, [store.user.id]);
 
-  if (!store.user.id) {
-    return null;
-  }
+  // if (!store.user.id) {
+  //   return null;
+  // }
 
-  if (!colors) {
-    return null;
-  }
+  // if (!colors) {
+  //   return null;
+  // }
 
   return (
     <FlexBlock

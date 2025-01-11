@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import sha256 from 'crypto-js/sha256';
 import * as VKID from '@vkid/sdk';
@@ -21,6 +21,8 @@ import { IAuthVkResponse } from './types/users';
 function App() {
 
   const container = document.getElementById('VkIdSdkOneTap');
+
+  const navigate = useNavigate();
 
   const codeVerifier = generateRandomString(45);
 
@@ -49,11 +51,21 @@ if (container) {
   };
   const { store } = useContext(Context);
 
+  // useEffect(() => {
+  //   if (!store.user.id) {
+  //     navigate('/')
+  //   }
+  //   else {
+  //     navigate('/colors')
+  //   }
+  // }, [store.user.id])
+
   const isShow = localStorage.getItem('token') && store.user.id;
 
   return (
     <div className="App">
       <Header  hideMenu={!isShow} />
+      {!store.user.id && <div style={{ position: 'absolute', right: 0 }} id="VkIdSdkOneTap"></div>}
       <Alert />
       <FlexBlock className="WrapperContent">
         <Menu hide={!isShow} />
