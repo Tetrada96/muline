@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
-import * as VKID from '@vkid/sdk';
 
 import { LoginPage } from './pages/LoginPage';
 import { PageColors } from './pages/PageColors';
@@ -14,57 +13,60 @@ import './index.scss';
 import { Menu } from './fragments/Menu/Menu';
 import { FlexBlock } from './components/FlexBlock/FlexBlock';
 import {generateRandomString} from './utils'
-import { IAuthVkResponse } from './types/users';
+import axios from 'axios';
+import { SHA256, enc } from 'crypto-js';
+import { getUser } from './services/users';
 
-
-function App() {
-
-  const container = document.getElementById('VkIdSdkOneTap');
+ 
+  
+ function App() {
 
   const navigate = useNavigate();
 
-  const codeVerifier = generateRandomString(45);
 
-  VKID.Config.init({
-    app: 52910357,
-    redirectUrl: 'https://mulinehub.ru',
-    responseMode: VKID.ConfigResponseMode.Callback,
-    source: VKID.ConfigSource.LOWCODE,
-    codeVerifier: codeVerifier,
-    state: generateRandomString(10),
-    scope: '', // Заполните нужными доступами по необходимости
-  });
-
-  const oneTap = new VKID.OneTap();
-  
-if (container) {
-  // Отрисовка кнопки в контейнере с именем приложения APP_NAME, светлой темой и на русском языке.
-  oneTap.render({ container: container, scheme: VKID.Scheme.LIGHT, lang: VKID.Languages.RUS, })
-    .on(VKID.OneTapInternalEvents.LOGIN_SUCCESS, function (payload: IAuthVkResponse) {
-
-      store.login({...payload, codeVerifier});
-  
-   
-  })
-  .on(VKID.WidgetEvents.ERROR, (e: any) => {console.log('Ошибка аутентификации',e)}); // handleError — какой-либо обработчик ошибки.
-  };
   const { store } = useContext(Context);
 
-  useEffect(() => {
-    if (!store.user.user_id) {
-      navigate('/')
-    }
-    else {
-      navigate('/colors')
-    }
-  }, [store.user.user_id])
+  // useEffect(() => {
+  //   if (!store.user.user_id) {
+  //    getUser()
+  //   }
+  //   else {
+  //     navigate('/colors')
+  //   }
+  // }, [store.user.user_id])
+   let codeVerifier = localStorage.getItem('codeVerifier')
+   if (!codeVerifier) {
+     codeVerifier = generateRandomString(45);
+     localStorage.setItem('codeVerifier', codeVerifier)
+   }
 
-
+   const codeChallenge = enc.Base64.stringify(SHA256(codeVerifier)).replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_')
   const isShow = localStorage.getItem('token') && store.user.user_id;
+
+  const conver = () => {
+    const obj: any = {}
+    for (const [label, value] of new URLSearchParams(document.location.search)) {
+      obj[label] = value
+    }
+    return obj
+  }
+
+   const obj = conver();
+   
+   console.log(obj)
+
+   Object.values(obj).length > 0 && store.login({ ...obj, codeVerifier: String(codeVerifier) });
+   
+   const onClick = () => {
+    location.assign(`https://id.vk.com/authorize?response_type=code&client_id=52910357&redirect_uri=http://localhost&state=${generateRandomString(10)}&code_challenge=${String(codeChallenge)}&code_challenge_method=S256`);
+   }
+
+   
 
   return (
     <div className="App">
-      <Header  hideMenu={!isShow} />
+      <Header hideMenu={!isShow} />
+      {!store.user.user_id  && <button onClick={onClick}>Войти</button>}
       {!store.user.user_id && <div style={{ position: 'absolute', right: 0 }} id="VkIdSdkOneTap"></div>}
       <Alert />
       <FlexBlock className="WrapperContent">

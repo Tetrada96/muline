@@ -65,9 +65,11 @@ class UserController {
   }
 
   async getUser(req,res,next) {
-    try{
+    try {
+      console.log(req)
       return res.json(req.user);
     } catch (e) {
+      console.log(e)
       next(e);
     }
   }

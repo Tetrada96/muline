@@ -46,13 +46,14 @@ class UserService {
 				'grant_type': 'authorization_code',
 				'code_verifier': payload.codeVerifier,
 				'code': payload.code,
-				'client_id': 52910357,
+				'client_id': '52910357',
 				'device_id': payload.device_id,
 				'redirect_uri': 'https://mulinehub.ru'
 			})
 		})
 
 		const tokens = await response.json()
+		console.log(tokens)
 
 		const user = await UserModel.findOne({ where: { user_id: tokens.user_id } });
 		console.log('user', user)
@@ -76,7 +77,7 @@ class UserService {
 		})
 		const userInfo = await userInfoRequest.json();
 
-		return await { user: { ...userInfo, id:userDto.id }, accessToken: tokens.access_token,  };
+		return await { user: { ...userInfo.user, id:userDto.id }, accessToken: tokens.access_token,  };
 	}
 
 	async logout(refreshToken) {
