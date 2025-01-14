@@ -56,9 +56,9 @@ import { getUser } from './services/users';
    console.log(obj)
 
    Object.values(obj).length > 0 && store.login({ ...obj, codeVerifier: String(codeVerifier) });
-   
+
    const onClick = () => {
-    location.assign(`https://id.vk.com/authorize?response_type=code&client_id=52910357&redirect_uri=http://localhost&state=${generateRandomString(10)}&code_challenge=${String(codeChallenge)}&code_challenge_method=S256`);
+    location.assign(`https://id.vk.com/authorize?response_type=code&client_id=52910357&redirect_uri=https://mulinehub.ru&state=${generateRandomString(10)}&code_challenge=${String(codeChallenge)}&code_challenge_method=S256`);
    }
 
    
